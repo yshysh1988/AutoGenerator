@@ -1,0 +1,3 @@
+				<if test=" @propertyName != null">
+					@@tableFile@@ = date_format(#{@propertyName},'%Y-%m-%d %H:%i:%s'),
+				</if>

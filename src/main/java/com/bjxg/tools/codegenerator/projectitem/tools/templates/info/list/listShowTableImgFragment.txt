@@ -1,0 +1,1 @@
+<img class="@propertyNameImg lazy" fileType="@fileType" folderType="@fileType" scaleWidth="30" scaleHeight="30">

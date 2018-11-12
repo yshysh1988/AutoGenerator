@@ -1,0 +1,1 @@
+  `@@tableFile@@` varchar(@length@) DEFAULT NULL COMMENT '@describe@'

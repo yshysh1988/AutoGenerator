@@ -1,0 +1,8 @@
+
+	 public @type get@methodName() {
+		 return @propertyName;
+	 }
+
+	 public void set@methodName(@type @propertyName) {
+		 this.@propertyName = @propertyName;
+	 }

@@ -1,0 +1,1 @@
+					            <td><div style='width:"+f.imgWidth+" ;height: "+f.imgHeight+";'><img onclick='_showImg(this)' width='100%' src='${r.@propertyName}'/></div></td>

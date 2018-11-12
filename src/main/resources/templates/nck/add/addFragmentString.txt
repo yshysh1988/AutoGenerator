@@ -1,0 +1,7 @@
+     			<div class="layui-inline">
+		        	<label class="layui-form-label">@describe@</label>
+		        	<div class="layui-input-inline">
+		        		<input type="text" id="@propertyName" name="@propertyName" placeholder="请输入@describe@" @isVereist@ value="${@class.@propertyName }" class="layui-input"/>
+		        		<span style="color: red" id="s-@propertyName"></span>
+		     		</div>
+     			</div>

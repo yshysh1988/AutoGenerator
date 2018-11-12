@@ -1,0 +1,115 @@
+package @package@.service.impl;
+
+import @package@.dao.@ClassNameDao;
+import @package@.entity.@ClassName;
+import @package@.service.@ClassNameService;
+import @package@.utils.PageUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+/**
+ * @author ysh
+ * @date @showDate
+ * @describe @showName ServiceImpl
+ */
+@Service
+public class @ClassNameServiceImpl implements @ClassNameService {
+
+    @Autowired
+    private @ClassNameDao dao;
+
+    /**
+     *添加@ClassName对象
+     *@param  entity 明细对象
+     *@author  ysh
+     *@date  @showDate 
+     *@updater or other
+     *@return int
+     */
+    @Override
+    public int insert(@ClassName entity){
+@infoSetPrimarykeyVal@
+        return dao.insert(entity);
+    }
+
+    /**
+     *修改@ClassName对象
+     *@param  entity 明细对象
+     *@author  ysh
+     *@date  @showDate 
+     *@updater or other
+     *@return int
+     */
+    @Override
+    public int update(@ClassName entity){
+        return dao.update(entity);
+    }
+
+    /**
+     *查询@ClassName对象
+     *@param  entity 明细对象
+     *@author  ysh
+     *@date  @showDate 
+     *@updater or other
+     *@return List<@ClassName>
+     */
+    @Override
+    public List<@ClassName> query(@ClassName entity){
+        return dao.query(entity);
+    }
+
+    /**
+     *删除@ClassName对象
+     *@param  entity 明细对象
+     *@author  ysh
+     *@date  @showDate 
+     *@updater or other
+     *@return int
+     */
+    @Override
+    public int delete(@ClassName entity){
+        return dao.delete(entity);
+    }
+
+    /**
+     * 分页查询@ClassName对象
+     * @param entity 对象
+     * @param pageNum	页数
+     * @param pageSize	大小
+     * @author  ysh
+     * @date  @showDate 
+     * @updater or other
+     * @return   PageUtil
+     */
+    @Override
+    public PageUtil pageQuery(@ClassName entity, int pageNum, int pageSize){
+        int size = dao.getPageCount(entity);
+
+        int offset = pageNum > 1 ? (pageNum - 1) * pageSize : 0;
+
+        List<@ClassName> result = dao.pageQuery(entity, offset, pageSize);
+
+        PageUtil paginator = new PageUtil(pageSize, size, pageNum);
+
+        paginator.setObject(result);
+
+        return paginator;
+    }
+    
+    /**
+	 * 根据 id获取 @showName
+	 *@author   ysh
+	 *@param @primarykey 主键id
+	 *@date  @showDate
+	 *@updater  or other
+	 *@return   @ClassName
+	 */ 
+	 @Override
+	 public @ClassName get@ClassNameById(@pramkeType @primarykey) {
+		 return dao.get@ClassNameById(@primarykey);
+	 }
+}
+
+	

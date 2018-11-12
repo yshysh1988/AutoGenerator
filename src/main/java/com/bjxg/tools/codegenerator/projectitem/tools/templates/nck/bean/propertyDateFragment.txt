@@ -1,0 +1,4 @@
+	 /*****@describe@*****/
+	 private @type @propertyName;
+	 /*****@describe@ 日常的字符串*****/
+	 private String @propertyNameStr;

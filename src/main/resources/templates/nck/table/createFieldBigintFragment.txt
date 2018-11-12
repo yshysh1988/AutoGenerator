@@ -1,0 +1,1 @@
+  `@@tableFile@@` bigint(20) DEFAULT NULL COMMENT '@describe@'

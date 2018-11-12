@@ -1,0 +1,3 @@
+		    <if test="entity.@propertyName!=null">
+		        and @@tableFile@@ = STR_TO_DATE(#{entity.@propertyName},"%Y-%m-%d %T")
+		    </if>

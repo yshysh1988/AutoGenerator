@@ -1,0 +1,1 @@
+  `@@tableFile@@` datetime DEFAULT NULL COMMENT '@describe@'

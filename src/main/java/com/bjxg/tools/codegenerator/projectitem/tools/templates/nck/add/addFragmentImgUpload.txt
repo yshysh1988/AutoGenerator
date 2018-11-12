@@ -1,0 +1,8 @@
+            //上传@describe@图片
+            layui.upload({
+                url: '<%=request.getContextPath()%>/admin/uploadImgs',//上传接口
+                elem: '#@propertyNameFile', //指定原始元素，默认直接查找class="layui-upload-file"
+                success: function(res){
+                    _showImage(res , "@propertyNameImg");
+                }
+            });
