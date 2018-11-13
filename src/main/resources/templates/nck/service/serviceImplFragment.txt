@@ -1,9 +1,9 @@
-package @package@.service.impl;
+package @packageServiceImpl@;
 
-import @package@.dao.@ClassNameDao;
-import @package@.entity.@ClassName;
-import @package@.service.@ClassNameService;
-import @package@.utils.PageUtil;
+import @packageDao@.@ClassNameDao;
+import @packageBean@.@ClassName;
+import @packageService@.@ClassNameService;
+import @packageUtil@.PageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,7 +30,7 @@ public class @ClassNameServiceImpl implements @ClassNameService {
      */
     @Override
     public int insert(@ClassName entity){
-@nckSetPrimarykeyVal@
+@setPrimarykeyVal@
         return dao.insert(entity);
     }
 

@@ -1,7 +1,0 @@
-     			<div class="layui-inline">
-		        	<label  class="layui-form-label">@describe@:</label>
-	            	<div class="layui-input-inline">
-		            	<input onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" type="text" @isVereist@ name="@propertyName" id="@propertyName" value="${@class.@propertyNameStr}" class="form-control input-small" placeholder="请选择@describe@"/>
-		            	<span style="color: red" id="s-@propertyName"></span>
-		        	</div>
-     			</div>

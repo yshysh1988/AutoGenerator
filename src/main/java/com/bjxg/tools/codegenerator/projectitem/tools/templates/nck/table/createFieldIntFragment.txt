@@ -1,1 +1,0 @@
-  `@@tableFile@@` int(11) DEFAULT NULL COMMENT '@describe@'

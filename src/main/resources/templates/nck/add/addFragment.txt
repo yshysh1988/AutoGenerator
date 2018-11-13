@@ -5,7 +5,7 @@
 	<head>
     	<meta charset="utf-8">
 		<title>新增@showName</title>
-		<%@include file="/WEB-INF/jsp/decorators/addHeader.jsp" %>
+		<%@include file="../include/addHeader.jsp" %>
 	</head>
 	<body>
  		<form id="saleForm" class="layui-form" style="margin-top:30px;">

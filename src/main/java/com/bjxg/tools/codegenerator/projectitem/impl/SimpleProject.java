@@ -20,6 +20,17 @@ public class SimpleProject implements Project {
 	private String nckAutoPath;
 	private String nckBasePackage;
 
+	private String beanPackage;
+	private String daoPackage;
+	private String servicePackage;
+	private String serviceImplPackage;
+	private String controllerPackage;
+	private String addPackage;
+	private String listPackage;
+	private String xmlPackage;
+	private String voPackage;
+	private String examplePackage;
+
 	private String beanPath;
 	private String daoPath;
 	private String servicePath;
@@ -30,6 +41,8 @@ public class SimpleProject implements Project {
 	private String xmlPath;
 	private String voPath;
 	private String examplePath;
+
+	private String packageUtil;
 
 	private List<List<ClellBean>> isNulls;
 	private List<List<ClellBean>> docList;
@@ -234,4 +247,93 @@ public class SimpleProject implements Project {
 		this.examplePath = examplePath;
 	}
 
+	public String getBeanPackage() {
+		return beanPackage;
+	}
+
+	public void setBeanPackage(String beanPackage) {
+		this.beanPackage = beanPackage;
+	}
+
+	public String getDaoPackage() {
+		return daoPackage;
+	}
+
+	public void setDaoPackage(String daoPackage) {
+		this.daoPackage = daoPackage;
+	}
+
+	public String getServicePackage() {
+		return servicePackage;
+	}
+
+	public void setServicePackage(String servicePackage) {
+		this.servicePackage = servicePackage;
+	}
+
+	public String getServiceImplPackage() {
+		return serviceImplPackage;
+	}
+
+	public void setServiceImplPackage(String serviceImplPackage) {
+		this.serviceImplPackage = serviceImplPackage;
+	}
+
+	public String getControllerPackage() {
+		return controllerPackage;
+	}
+
+	public void setControllerPackage(String controllerPackage) {
+		this.controllerPackage = controllerPackage;
+	}
+
+	public String getAddPackage() {
+		return addPackage;
+	}
+
+	public void setAddPackage(String addPackage) {
+		this.addPackage = addPackage;
+	}
+
+	public String getListPackage() {
+		return listPackage;
+	}
+
+	public void setListPackage(String listPackage) {
+		this.listPackage = listPackage;
+	}
+
+	public String getXmlPackage() {
+		return xmlPackage;
+	}
+
+	public void setXmlPackage(String xmlPackage) {
+		this.xmlPackage = xmlPackage;
+	}
+
+	public String getVoPackage() {
+		return voPackage;
+	}
+
+	public void setVoPackage(String voPackage) {
+		this.voPackage = voPackage;
+	}
+
+	public String getExamplePackage() {
+		return examplePackage;
+	}
+
+	public void setExamplePackage(String examplePackage) {
+		this.examplePackage = examplePackage;
+	}
+
+	@Override
+	public String getPackageUtil() {
+		return packageUtil;
+	}
+
+	@Override
+	public void setPackageUtil(String packageUtil) {
+		this.packageUtil = packageUtil;
+	}
 }

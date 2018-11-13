@@ -1,2 +1,0 @@
-		<result column="@@tableFile@@" property="@propertyName" />
-		<result column="@propertyName" property="@propertyNameStr" />

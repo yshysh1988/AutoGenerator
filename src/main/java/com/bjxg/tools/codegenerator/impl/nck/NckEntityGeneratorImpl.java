@@ -55,7 +55,7 @@ public class NckEntityGeneratorImpl implements EntityGenerator {
 					writeFile = new File(project.getBeanPath() + calssName + ".java");
 					File classFile = new File(project.getNckAutoPath() + "bean/" + "beanFragment.txt");
 					NckEntityFileUtils.readNckToFile(classFile, writeFile, tableName, calssName, fileId.describe, "",
-							"", "", isEmpty, project.getNckAutoPath() + "bean/", project.getNckBasePackage(), list);
+							"", "", isEmpty, project.getNckAutoPath() + "bean/", project.getNckBasePackage(), list,project);
 				}
 			}
 			System.out.println(

@@ -1,5 +1,0 @@
-		        <label class="layui-form-label">@describe@</label>
-				<div class="layui-input-block">
-					<textarea placeholder="请输入@describe@" style="width: 90%;" class="layui-textarea" @isVereist@ id="@propertyName" name = "@propertyName" lay-verify="content">${@class.@propertyName}</textarea>
-					<span style="color: red" id="s-@propertyName"></span>
-				</div>

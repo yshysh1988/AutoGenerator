@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- @showName xml anthor ysh -->
-<mapper namespace="@package@.dao.@ClassNameDao">
+<mapper namespace="@packageDao@.@ClassNameDao">
 
 	<!-- 新增 @showName 对象 -->
-	<insert id="insert" parameterType="@package@.entity.@ClassName"
+	<insert id="insert" parameterType="@packageBean@.@ClassName"
 			useGeneratedKeys="true" keyProperty="@primarykey">
 		insert into @tabelName
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -16,7 +16,7 @@
 	</insert>
 
 	<!-- 更新 @showName 对象 -->
-	<update id="update" parameterType="@package@.entity.@ClassName">
+	<update id="update" parameterType="@packageBean@.@ClassName">
 		update @tabelName
         <set>
             <trim suffixOverrides=",">
@@ -33,7 +33,7 @@
     </delete>
     
     <!-- 返回 @showName 对象 -->
-    <resultMap type="@package@.entity.@ClassName" id="@classMap">
+    <resultMap type="@packageBean@.@ClassName" id="@classMap">
 @@Result@@
     </resultMap>
 

@@ -1,1 +1,0 @@
-			                    <th field="@propertyName" @IMg@  @DATE@>@listdescribe</th>

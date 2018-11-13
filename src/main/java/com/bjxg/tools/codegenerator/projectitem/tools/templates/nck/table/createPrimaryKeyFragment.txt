@@ -1,1 +1,0 @@
-  `@primary_key` int(@length@) NOT NULL AUTO_INCREMENT COMMENT '@describe@'

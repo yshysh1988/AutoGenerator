@@ -1,3 +1,0 @@
-			<if test=" @propertyName != null">
-				@@tableFile@@,
-			</if>

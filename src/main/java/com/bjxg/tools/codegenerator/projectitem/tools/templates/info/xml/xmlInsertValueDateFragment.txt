@@ -1,3 +1,0 @@
-			<if test="@propertyName != null">
-				date_format(#{@propertyName},'%Y-%m-%d %H:%i:%s'),
-			</if>			

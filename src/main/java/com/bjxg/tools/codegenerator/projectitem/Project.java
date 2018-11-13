@@ -65,6 +65,46 @@ public interface Project {
 
 	public void setIsNulls(List<List<ClellBean>> isNulls);
 
+	public String getBeanPackage();
+
+	public void setBeanPackage(String beanPackage);
+
+	public String getDaoPackage();
+
+	public void setDaoPackage(String daoPackage);
+
+	public String getServicePackage();
+
+	public void setServicePackage(String servicePackage);
+
+	public String getServiceImplPackage();
+
+	public void setServiceImplPackage(String serviceImplPackage) ;
+
+	public String getControllerPackage();
+
+	public void setControllerPackage(String controllerPackage);
+
+	public String getAddPackage();
+
+	public void setAddPackage(String addPackage);
+
+	public String getListPackage();
+
+	public void setListPackage(String listPackage);
+
+	public String getXmlPackage();
+
+	public void setXmlPackage(String xmlPackage);
+
+	public String getVoPackage();
+
+	public void setVoPackage(String voPackage);
+
+	public String getExamplePackage() ;
+
+	void setExamplePackage(String examplePackage) ;
+
 	public String getBeanPath();
 
 	public void setBeanPath(String beanPath);
@@ -104,4 +144,10 @@ public interface Project {
 	public String getExamplePath();
 	
 	public void setExamplePath(String examplePath);
+
+	public String getPackageUtil();
+
+	public void setPackageUtil(String packageUtil);
+
+
 }

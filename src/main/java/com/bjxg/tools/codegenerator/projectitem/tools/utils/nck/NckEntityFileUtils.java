@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.List;
 
+import com.bjxg.tools.codegenerator.projectitem.Project;
 import com.bjxg.tools.codegenerator.projectitem.tools.bean.ClellBean;
 import com.bjxg.tools.codegenerator.projectitem.tools.constants.DateConstants;
 import com.bjxg.tools.codegenerator.projectitem.tools.constants.RowConstants;
@@ -35,7 +36,7 @@ public class NckEntityFileUtils {
 	 */
 	public static String readNckToFile(File fileName, File writeFile, String tableName, String classsName,
 			String proName, String methodName, String typeName, String lengthName, boolean isEmpty, String path,
-			String packagestr, List<ClellBean> clLs) throws Exception {
+			String packagestr, List<ClellBean> clLs,Project project) throws Exception {
 		String result = "";
 		FileReader fileReader = null;
 		BufferedReader bufferedReader = null;
@@ -52,6 +53,7 @@ public class NckEntityFileUtils {
 						read = read.replace("@package@", packagestr);
 						read = read.replace("@showName", proName.replace("表", ""));
 						read = read.replace("@showDate", AutoUtils.getNowDate(DateConstants.DATE_FORMAT1));
+						read = read.replace("@packageBean@", project.getBeanPackage());
 						if (classsName != null && classsName.trim().length() > 0) {
 							read = read.replace("@class", AutoUtils.getLowerCase(classsName));
 						}

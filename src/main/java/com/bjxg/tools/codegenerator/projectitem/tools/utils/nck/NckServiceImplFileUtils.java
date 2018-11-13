@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.List;
 
+import com.bjxg.tools.codegenerator.projectitem.Project;
 import com.bjxg.tools.codegenerator.projectitem.tools.bean.ClellBean;
 import com.bjxg.tools.codegenerator.projectitem.tools.constants.DateConstants;
 import com.bjxg.tools.codegenerator.projectitem.tools.utils.AutoUtils;
@@ -34,7 +35,7 @@ public class NckServiceImplFileUtils {
 	 */
 	public static String readNckToFile(File fileName, File writeFile, String tableName, String classsName,
 			String proName, String methodName, String typeName, String lengthName, boolean isEmpty, String path,
-			String packagestr, List<ClellBean> clLs) throws Exception {
+			List<ClellBean> clLs,Project project) throws Exception {
 		ClellBean primarykey = AutoUtils.getPrimarykey(clLs,"主键");
 		String result = "";
 		FileReader fileReader = null;
@@ -44,14 +45,9 @@ public class NckServiceImplFileUtils {
 			bufferedReader = new BufferedReader(fileReader);
 
 			String read = "";
-			String infoSetPrimarykeyVal = "";
+			String setPrimarykeyVal = "";
 			if("主键".equals(primarykey.describe) && "String".equals(primarykey.type)){
-				infoSetPrimarykeyVal = "        entity.set"+AutoUtils.getUpperCase(primarykey.name)+"(com.info.admin.utils.UUIDUtils.getUUid());";
-			}
-
-			String nckSetPrimarykeyVal = "";
-			if("主键".equals(primarykey.describe) && "String".equals(primarykey.type)){
-				nckSetPrimarykeyVal = "        entity.set"+AutoUtils.getUpperCase(primarykey.name)+"(com.netcai.common.UUIDUtils.getUUid());";
+				setPrimarykeyVal = "        entity.set"+AutoUtils.getUpperCase(primarykey.name)+"("+project.getPackageUtil()+".UUIDUtils.getUUid());";
 			}
 
 			while ((read = bufferedReader.readLine()) != null) {
@@ -59,18 +55,23 @@ public class NckServiceImplFileUtils {
 					read = read.replace("@tabelName", tableName);
 					read = read.replace("@ClassName", classsName);
 					read = read.replace("@className", tableName);
-					read = read.replace("@package@", packagestr);
+					read = read.replace("@package@", project.getNckBasePackage());
 
-					if("@infoSetPrimarykeyVal@".equals(read)){
-						read =  infoSetPrimarykeyVal;
-					}else if("@nckSetPrimarykeyVal@".equals(read)){
-						read =  nckSetPrimarykeyVal;
+					if("@setPrimarykeyVal@".equals(read)){
+						read =  setPrimarykeyVal;
 					}
 
 					read = read.replace("@pramkeType", primarykey.type);
 					read = read.replace("@primarykey", AutoUtils.getLowerCase(primarykey.name));
 					read = read.replace("@showName", proName.replace("表", ""));
 					read = read.replace("@showDate", AutoUtils.getNowDate(DateConstants.DATE_FORMAT1));
+
+					read = read.replace("@packageServiceImpl@", project.getServiceImplPackage());
+					read = read.replace("@packageDao@", project.getDaoPackage());
+					read = read.replace("@packageBean@", project.getBeanPackage());
+					read = read.replace("@packageService@", project.getServicePackage());
+					read = read.replace("@packageUtil@", project.getPackageUtil());
+
 					if (classsName != null && classsName.trim().length() > 0) {
 						read = read.replace("@class", AutoUtils.getLowerCase(classsName));
 					}

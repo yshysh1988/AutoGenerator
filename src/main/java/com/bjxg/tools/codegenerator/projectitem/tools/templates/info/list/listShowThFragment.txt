@@ -1,4 +1,0 @@
-						 <label for="@propertyName" class="col-sm-2 control-label">@listdescribe：</label>
-		                 <div class="col-xs-2">
-		                   <input type="text" class="form-control" id="@propertyName" name="@propertyName" value="${@class.@propertyName}" placeholder="请输入@listdescribe">
-		                 </div>

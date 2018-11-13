@@ -52,7 +52,7 @@ public class NckServiceGeneratorImpl implements ServiceGenerator {
 					writeFile = new File(project.getServicePath() + calssName + "Service.java");
 					File classFile = new File(project.getNckAutoPath() + "service/" + "serviceFragment.txt");
 					NckServiceFileUtils.readNckToFile(classFile, writeFile, tableName, calssName, fileId.describe, "",
-							"", "", isEmpty, project.getNckAutoPath() + "service/", project.getNckBasePackage(), list);
+							"", "", isEmpty, project.getNckAutoPath() + "service/", list,project);
 				}
 			}
 			System.out.println(AutoUtils.getNowDate(DateConstants.DATE_FORMAT1) + " Create " + calssName

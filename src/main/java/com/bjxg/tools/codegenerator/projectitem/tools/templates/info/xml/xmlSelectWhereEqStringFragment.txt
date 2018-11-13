@@ -1,3 +1,0 @@
-		    <if test=" entity.@propertyName != null">
-			    and @@tableFile@@ =  #{entity.@propertyName} 
-		    </if>

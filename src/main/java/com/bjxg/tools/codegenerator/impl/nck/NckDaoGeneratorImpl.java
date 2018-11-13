@@ -55,7 +55,7 @@ public class NckDaoGeneratorImpl implements DaoGenerator {
 					writeFile = new File(project.getDaoPath() + calssName + "Dao.java");
 					File classFile = new File(project.getNckAutoPath() + "dao/" + "daoFragment.txt");
 					NckDaoFileUtils.readNckToFile(classFile, writeFile, tableName, calssName, fileId.describe, "", "",
-							"", isEmpty, project.getNckAutoPath() + "dao/", project.getNckBasePackage(), list);
+							"", isEmpty, project.getNckAutoPath() + "dao/", list,project);
 					continue;
 				}
 			}

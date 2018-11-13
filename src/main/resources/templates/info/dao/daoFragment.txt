@@ -1,6 +1,6 @@
-package @package@.dao;
+package @packageDao@;
 
-import @package@.entity.@ClassName;
+import @packageBean@.@ClassName;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
