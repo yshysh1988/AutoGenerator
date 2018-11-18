@@ -30,6 +30,7 @@ public class SimpleProject implements Project {
 	private String xmlPackage;
 	private String voPackage;
 	private String examplePackage;
+	private String desktopPackage;
 
 	private String beanPath;
 	private String daoPath;
@@ -41,6 +42,7 @@ public class SimpleProject implements Project {
 	private String xmlPath;
 	private String voPath;
 	private String examplePath;
+	private String desktopPath;
 
 	private String packageUtil;
 
@@ -335,5 +337,21 @@ public class SimpleProject implements Project {
 	@Override
 	public void setPackageUtil(String packageUtil) {
 		this.packageUtil = packageUtil;
+	}
+
+	public String getDesktopPackage() {
+		return desktopPackage;
+	}
+
+	public void setDesktopPackage(String desktopPackage) {
+		this.desktopPackage = desktopPackage;
+	}
+
+	public String getDesktopPath() {
+		return desktopPath;
+	}
+
+	public void setDesktopPath(String desktopPath) {
+		this.desktopPath = desktopPath;
 	}
 }

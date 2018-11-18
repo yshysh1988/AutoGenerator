@@ -2,8 +2,8 @@ package com.bjxg.tools.codegenerator;
 
 import com.bjxg.tools.codegenerator.projectitem.Project;
 
-public interface ServiceGenerator {
+public interface DesktopGenerator {
 
-    void generate(Project project);
-
+	void generate(Project project);
+	
 }

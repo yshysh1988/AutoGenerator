@@ -44,6 +44,7 @@ public class @ClassNameServiceImpl implements @ClassNameService {
      */
     @Override
     public int update(@ClassName entity){
+@update@
         return dao.update(entity);
     }
 
@@ -70,7 +71,7 @@ public class @ClassNameServiceImpl implements @ClassNameService {
      */
     @Override
     public int delete(@ClassName entity){
-        return dao.delete(entity);
+@del@
     }
 
     /**

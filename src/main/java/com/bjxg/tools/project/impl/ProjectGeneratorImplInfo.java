@@ -17,6 +17,7 @@ public class ProjectGeneratorImplInfo implements ProjectGenerator {
     private XmlGenerator nckXmlGeneratorImpl = new NckXmlGeneratorImpl();
     private AddGenerator nckAddGeneratorImpl = new NckAddGeneratorImpl();
     private ListGenerator listGenerator = new NckListGeneratorImpl();
+    private DesktopGenerator desktopGenerator = new NckDesktopGeneratorImpl();
 
     @Override
     public void generate(Project project) {
@@ -46,6 +47,8 @@ public class ProjectGeneratorImplInfo implements ProjectGenerator {
 
         project.setListPath(project.getNckOutputPath() + "/webapp/WEB-INF/jsp/");
 
+        project.setDesktopPath(project.getNckOutputPath() + "/webapp/WEB-INF/jsp/");
+
         project.setXmlPath(project.getNckOutputPath() + "/resources/"
                 + (project.getXmlPackage()).replace(".", "/") + "/");
 
@@ -58,5 +61,6 @@ public class ProjectGeneratorImplInfo implements ProjectGenerator {
         nckXmlGeneratorImpl.generate(project);
         nckAddGeneratorImpl.generate(project);
         listGenerator.generate(project);
+        desktopGenerator.generate(project);
     }
 }

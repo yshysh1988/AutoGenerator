@@ -1,8 +1,5 @@
 package com.bjxg.tools.codegenerator.impl.nck;
 
-import java.io.File;
-import java.util.List;
-
 import com.bjxg.tools.codegenerator.ServiceGenerator;
 import com.bjxg.tools.codegenerator.projectitem.Project;
 import com.bjxg.tools.codegenerator.projectitem.tools.bean.ClellBean;
@@ -12,54 +9,56 @@ import com.bjxg.tools.codegenerator.projectitem.tools.utils.AutoUtils;
 import com.bjxg.tools.codegenerator.projectitem.tools.utils.nck.NckFileUtils;
 import com.bjxg.tools.codegenerator.projectitem.tools.utils.nck.NckServiceFileUtils;
 
+import java.io.File;
+import java.util.List;
+
 public class NckServiceGeneratorImpl implements ServiceGenerator {
-	public void generate(Project project) {
-		try {
-			NckFileUtils.isFiles(project.getServicePath(), true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		try {
-			createService(project);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+    public void generate(Project project) {
+        try {
+            NckFileUtils.isFiles(project.getServicePath(), true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            createService(project);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-	/**
-	 * @param project
-	 * @throws Exception
-	 * 
-	 */
-	public void createService(Project project) throws Exception {
+    /**
+     * @param project
+     * @throws Exception
+     */
+    public void createService(Project project) throws Exception {
 
-		System.out.println("Nck service  path " + project.getServicePath());
-		List<List<ClellBean>> docList = project.getDocList();
-		if (docList == null || docList.size() == 0) {
-			return;
-		}
+        System.out.println("Nck service  path " + project.getServicePath());
+        List<List<ClellBean>> docList = project.getDocList();
+        if (docList == null || docList.size() == 0) {
+            return;
+        }
 
-		boolean isEmpty = true;
-		boolean isFile = false;
-		File writeFile = null;
-		String calssName = "";
-		for (List<ClellBean> list : docList) {
-			for (ClellBean fileId : list) {
-				if (RowConstants.ROW_ZERO.equals(fileId.row)) {
-					calssName = AutoUtils.getUpperCase(fileId.name);
-					NckFileUtils.createFile(project.getServicePath() + calssName + "Service.java", isFile);
-					String tableName = fileId.name.toLowerCase();
-					writeFile = new File(project.getServicePath() + calssName + "Service.java");
-					File classFile = new File(project.getNckAutoPath() + "service/" + "serviceFragment.txt");
-					NckServiceFileUtils.readNckToFile(classFile, writeFile, tableName, calssName, fileId.describe, "",
-							"", "", isEmpty, project.getNckAutoPath() + "service/", list,project);
-				}
-			}
-			System.out.println(AutoUtils.getNowDate(DateConstants.DATE_FORMAT1) + " Create " + calssName
-					+ " service class success！");
-		}
-		System.out.println("--------- " + AutoUtils.getNowDate(DateConstants.DATE_FORMAT1) + "-----"
-				+ " Create Service class success！" + "----");
-	}
+        boolean isEmpty = true;
+        boolean isFile = false;
+        File writeFile = null;
+        String calssName = "";
+        for (List<ClellBean> list : docList) {
+            for (ClellBean fileId : list) {
+                if (RowConstants.ROW_ZERO.equals(fileId.row)) {
+                    calssName = AutoUtils.getUpperCase(fileId.name);
+                    NckFileUtils.createFile(project.getServicePath() + calssName + "Service.java", isFile);
+                    String tableName = fileId.name.toLowerCase();
+                    writeFile = new File(project.getServicePath() + calssName + "Service.java");
+                    File classFile = new File(project.getNckAutoPath() + "service/" + "serviceFragment.txt");
+                    NckServiceFileUtils.readNckToFile(classFile, writeFile, tableName, calssName, fileId.describe, "",
+                            "", "", isEmpty, project.getNckAutoPath() + "service/", list, project);
+                }
+            }
+            System.out.println(AutoUtils.getNowDate(DateConstants.DATE_FORMAT1) + " Create " + calssName
+                    + " service class success！");
+        }
+        System.out.println("--------- " + AutoUtils.getNowDate(DateConstants.DATE_FORMAT1) + "-----"
+                + " Create Service class success！" + "----");
+    }
 
 }

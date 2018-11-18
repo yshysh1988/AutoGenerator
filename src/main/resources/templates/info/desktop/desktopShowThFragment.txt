@@ -1,0 +1,6 @@
+											<div class="layui-inline">
+                                                 <label for="@propertyName" class="col-sm-4 control-label fl">@listdescribe：</label>
+                                                 <div class="col-xs-4 fl">
+                                                   <input type="text" class="form-control" id="@propertyName" name="@propertyName" value="${@class.@propertyName}" placeholder="请输入@listdescribe">
+                                                 </div>
+											</div>

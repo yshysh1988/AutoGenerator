@@ -50,6 +50,7 @@ public class NckEntityGeneratorImpl implements EntityGenerator {
 			for (ClellBean fileId : list) {
 				if (RowConstants.ROW_ZERO.equals(fileId.row)) {
 					calssName = AutoUtils.getUpperCase(fileId.name);
+//					System.out.println(calssName + " ：： "+ fileId.describe);
 					NckFileUtils.createFile(project.getBeanPath() + calssName + ".java", isFile);
 					String tableName = fileId.name.toLowerCase();
 					writeFile = new File(project.getBeanPath() + calssName + ".java");

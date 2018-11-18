@@ -43,6 +43,7 @@ public class @ClassNameController extends BaseController{
     @RequestMapping(value = "/list", method = { RequestMethod.GET, RequestMethod.POST })
     @RequiresPermissions("@class:query")
     public String get@ClassNameList(HttpServletRequest request, @ModelAttribute @ClassName entity, Model model) {
+        logger.info("[@ClassNameController][get@ClassNameList] 查询@showName列表:");
         // 获取分页当前的页码
         int currentPageNum = this.getPageNum(request);
         // 获取分页的大小
@@ -51,6 +52,27 @@ public class @ClassNameController extends BaseController{
         model.addAttribute("paginator", paginator);
         model.addAttribute("@class", entity);
         return "@@clzss/list@ClassName";
+    }
+
+     /**
+     *我的桌面查询@showName列表
+     *@author   ysh
+     *@date  2018-07-12 10:50:32
+     *@updater  or other
+     *@return   String
+     */
+    @RequestMapping(value = "/list/desktop", method = { RequestMethod.GET, RequestMethod.POST })
+    @RequiresPermissions("@class:query")
+    public String get@ClassNameListDesktop(HttpServletRequest request, @ModelAttribute @ClassName entity, Model model) {
+        logger.info("[@ClassNameController][get@ClassNameListDesktop] 我的桌面查询@showName列表:");
+        // 获取分页当前的页码
+        int currentPageNum = this.getPageNum(request);
+        // 获取分页的大小
+        int currentPageSize = this.getPageSize(request);
+        PageUtil paginator = service.pageQuery(entity, currentPageNum, currentPageSize);
+        model.addAttribute("paginator", paginator);
+        model.addAttribute("@class", entity);
+        return "@@clzss/list@ClassNameDesktop";
     }
 
     /**

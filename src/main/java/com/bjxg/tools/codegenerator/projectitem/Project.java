@@ -149,5 +149,11 @@ public interface Project {
 
 	public void setPackageUtil(String packageUtil);
 
+	public String getDesktopPackage();
 
+	public void setDesktopPackage(String desktopPackage);
+
+	public String getDesktopPath();
+
+	public void setDesktopPath(String desktopPath) ;
 }
