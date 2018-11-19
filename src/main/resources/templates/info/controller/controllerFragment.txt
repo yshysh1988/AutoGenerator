@@ -6,6 +6,7 @@ import @package@.result.JsonResult;
 import @package@.result.JsonResultCode;
 import @packageService@.@ClassNameService;
 import @packageUtil@.PageUtil;
+@StringUtils@
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -85,7 +86,7 @@ public class @ClassNameController extends BaseController{
     @RequestMapping(value="/addOrEdit",method={RequestMethod.GET,RequestMethod.POST})
     public String addOrEdit(HttpServletRequest request,@pramkeType @primarykey,Model model){
         try{
-            if(null != @primarykey){
+            if(null != @primarykey @isPrimaryString@){
                 //根据id查询系统用户
                 @ClassName @class = service.get@ClassNameById(@primarykey);
                 model.addAttribute("@class", @class);
@@ -105,7 +106,7 @@ public class @ClassNameController extends BaseController{
      * @author   ysh
      * @date   @showDate 
      * @updater  or other
-     * @return   com.netcai.admin.result.JsonResult
+     * @return   @package@.result.JsonResult
      */
     @ResponseBody
     @RequestMapping(value = "insertAndUpdate", method = { RequestMethod.GET, RequestMethod.POST })
@@ -118,7 +119,7 @@ public class @ClassNameController extends BaseController{
             }
 
             // 通过id来判断是新增还是修改
-            if (null != entity.get@Primarykey()) {
+            if (null != entity.get@Primarykey() @isGetPrimaryString@) {
                 result = service.update(entity);
             } else {
                 result = service.insert(entity);
@@ -140,7 +141,7 @@ public class @ClassNameController extends BaseController{
      * @author   ysh
      * @date   @showDate 
      * @updater  or other
-     * @return   com.netcai.admin.result.JsonResult
+     * @return   @package@.result.JsonResult
      */
     @ResponseBody
     @RequestMapping(value = "query", method = { RequestMethod.GET, RequestMethod.POST })
@@ -160,7 +161,7 @@ public class @ClassNameController extends BaseController{
      * @author   ysh
      * @date   @showDate 
      * @updater  or other
-     * @return   com.netcai.admin.result.JsonResult
+     * @return   @package@.result.JsonResult
      */
     @ResponseBody
     @RequestMapping(value = "delete", method = { RequestMethod.GET, RequestMethod.POST })
@@ -188,7 +189,7 @@ public class @ClassNameController extends BaseController{
      * @author   ysh
      * @date   @showDate 
      * @updater  or other
-     * @return   com.netcai.admin.result.JsonResult
+     * @return   @package@.result.JsonResult
      */
     @ResponseBody
     @RequestMapping(value = "pageQuery", method = { RequestMethod.GET, RequestMethod.POST })

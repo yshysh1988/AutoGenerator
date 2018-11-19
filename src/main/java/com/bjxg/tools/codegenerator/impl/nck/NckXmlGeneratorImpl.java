@@ -51,8 +51,8 @@ public class NckXmlGeneratorImpl implements XmlGenerator {
 					calssName = AutoUtils.getUpperCase(fileId.name);
 					writeFile = new File(project.getXmlPath() + calssName + "Dao.xml");
 					File classFile = new File(project.getNckAutoPath() + "xml/" + "xmlFragment.txt");
-					NckXmlFileUtils.readNckToFile(classFile, writeFile, tableName, calssName, fileId.describe, AutoUtils.getPrimarykey(list,"主键"), 
-							isEmpty, project.getNckAutoPath() + "xml/", project.getNckBasePackage(), list,project);
+					NckXmlFileUtils.readNckToFile(classFile, writeFile, tableName, calssName, fileId.describe,
+							isEmpty, project.getNckAutoPath() + "xml/", list,project);
 				}
 			}
 			System.out.println(

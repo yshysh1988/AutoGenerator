@@ -43,29 +43,24 @@ public class NckDaoFileUtils {
 		try {
 			fileReader = new FileReader(fileName);
 			bufferedReader = new BufferedReader(fileReader);
-			try {
-				String read = "";
-
-				while ((read = bufferedReader.readLine()) != null) {
-					if (read != null && read.trim().length() > 0) {
-						read = read.replace("@tabelName", tableName);
-						read = read.replace("@ClassName", classsName);
-						read = read.replace("@className", tableName);
-						read = read.replace("@package@", project.getNckBasePackage());
-						read = read.replace("@pramkeType", primarykey.type);
-						read = read.replace("@primarykey", AutoUtils.getLowerCase(primarykey.name));
-						read = read.replace("@showName", proName.replace("表", ""));
-						read = read.replace("@showDate", AutoUtils.getNowDate(DateConstants.DATE_FORMAT1));
-						read = read.replace("@packageDao@", project.getDaoPackage());
-						read = read.replace("@packageBean@", project.getBeanPackage());
-						if (classsName != null && classsName.trim().length() > 0) {
-							read = read.replace("@class", AutoUtils.getLowerCase(classsName));
-						}
+			String read = "";
+			while ((read = bufferedReader.readLine()) != null) {
+				if (read != null && read.trim().length() > 0) {
+					read = read.replace("@tabelName", tableName);
+					read = read.replace("@ClassName", classsName);
+					read = read.replace("@className", tableName);
+					read = read.replace("@package@", project.getNckBasePackage());
+					read = read.replace("@pramkeType", primarykey.type);
+					read = read.replace("@primarykey", AutoUtils.getLowerCase(primarykey.name));
+					read = read.replace("@showName", proName.replace("表", ""));
+					read = read.replace("@showDate", AutoUtils.getNowDate(DateConstants.DATE_FORMAT1));
+					read = read.replace("@packageDao@", project.getDaoPackage());
+					read = read.replace("@packageBean@", project.getBeanPackage());
+					if (classsName != null && classsName.trim().length() > 0) {
+						read = read.replace("@class", AutoUtils.getLowerCase(classsName));
 					}
-					result = result + read + "\r\n";
 				}
-			} catch (Exception e) {
-				e.printStackTrace();
+				result = result + read + "\r\n";
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

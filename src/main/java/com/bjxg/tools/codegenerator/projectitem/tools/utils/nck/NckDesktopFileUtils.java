@@ -31,44 +31,40 @@ public class NckDesktopFileUtils {
         try {
             fileReader = new FileReader(fileName);
             bufferedReader = new BufferedReader(fileReader);
-            try {
-                String read = "";
-                HashMap<String, String> chenkMap = new HashMap<String, String>();
-                chenkMap.put("formParas", "");
-                chenkMap.put("regArray", "");
-                chenkMap.put("errorMsgArray", "");
-                String clzss = AutoUtils.getLowerCase(classsName);
-                while ((read = bufferedReader.readLine()) != null) {
-                    if (read != null && read.trim().length() > 0) {
-                        read = read.replace("@tabelName", tableName);
-                        read = read.replace("@ClassName", classsName);
-                        read = read.replace("@propertyName", proName);
-                        read = read.replace("@idName", tableName + "Id");
-                        read = read.replace("@IdName", classsName + "Id");
-                        read = read.replace("@primarykey", AutoUtils.getLowerCase(primarykey.name));
-                        read = read.replace("@showName", proName.replace("表", ""));
-                        read = read.replace("@package@", basePackage);
-                        if (classsName != null && classsName.trim().length() > 0) {
-                            read = read.replace("@class", clzss);
-                        }
-                        if ("@listQuery@".equals(read)) {
-                            read = setListTableTrtd(new File(path + "desktopShowThFragment.txt"), writeFile, clLs, path,
-                                    chenkMap, "vague", clzss);
-                        } else if ("@listShowTh@".equals(read)) {
-                            read = setListTableTrtd(new File(path + "desktopShowTableThFragment.txt"), writeFile, clLs,
-                                    path, null, "listShowTh", clzss);
-                        } else if ("@listShowVal@".equals(read)) {
-                            read = setListTableTrtd(new File(path + "desktopShowTableTdFragment.txt"), writeFile, clLs,
-                                    path, null, "listShowVal", clzss);
-                        }
-                        read = read.replace("@formParas", chenkMap.get("formParas"));
-                        read = read.replace("@regArray", chenkMap.get("regArray"));
-                        read = read.replace("@errorMsgArray", chenkMap.get("errorMsgArray"));
+            String read = "";
+            HashMap<String, String> chenkMap = new HashMap<String, String>();
+            chenkMap.put("formParas", "");
+            chenkMap.put("regArray", "");
+            chenkMap.put("errorMsgArray", "");
+            String clzss = AutoUtils.getLowerCase(classsName);
+            while ((read = bufferedReader.readLine()) != null) {
+                if (read != null && read.trim().length() > 0) {
+                    read = read.replace("@tabelName", tableName);
+                    read = read.replace("@ClassName", classsName);
+                    read = read.replace("@propertyName", proName);
+                    read = read.replace("@idName", tableName + "Id");
+                    read = read.replace("@IdName", classsName + "Id");
+                    read = read.replace("@primarykey", AutoUtils.getLowerCase(primarykey.name));
+                    read = read.replace("@showName", proName.replace("表", ""));
+                    read = read.replace("@package@", basePackage);
+                    if (classsName != null && classsName.trim().length() > 0) {
+                        read = read.replace("@class", clzss);
                     }
-                    result = result + read + "\r\n";
+                    if ("@listQuery@".equals(read)) {
+                        read = setListTableTrtd(new File(path + "desktopShowThFragment.txt"), writeFile, clLs, path,
+                                chenkMap, "vague", clzss);
+                    } else if ("@listShowTh@".equals(read)) {
+                        read = setListTableTrtd(new File(path + "desktopShowTableThFragment.txt"), writeFile, clLs,
+                                path, null, "listShowTh", clzss);
+                    } else if ("@listShowVal@".equals(read)) {
+                        read = setListTableTrtd(new File(path + "desktopShowTableTdFragment.txt"), writeFile, clLs,
+                                path, null, "listShowVal", clzss);
+                    }
+                    read = read.replace("@formParas", chenkMap.get("formParas"));
+                    read = read.replace("@regArray", chenkMap.get("regArray"));
+                    read = read.replace("@errorMsgArray", chenkMap.get("errorMsgArray"));
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
+                result = result + read + "\r\n";
             }
         } catch (Exception e) {
             e.printStackTrace();

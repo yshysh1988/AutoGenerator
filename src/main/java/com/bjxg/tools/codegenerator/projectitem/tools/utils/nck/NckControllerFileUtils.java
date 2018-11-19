@@ -32,35 +32,44 @@ public class NckControllerFileUtils {
         try {
             fileReader = new FileReader(fileName);
             bufferedReader = new BufferedReader(fileReader);
-            try {
-                String read = "";
-                String clzss = classsName.toLowerCase();
-                while ((read = bufferedReader.readLine()) != null) {
-                    if (read != null && read.trim().length() > 0) {
-                        read = read.replace("@tabelName", tableName);
-                        read = read.replace("@ClassName", classsName);
-                        read = read.replace("@className", tableName);
-                        read = read.replace("@package@", project.getNckBasePackage());
-                        read = read.replace("@pramkeType", primarykey.type);
-                        read = read.replace("@primarykey", primarykey.name);
-                        read = read.replace("@Primarykey", AutoUtils.getUpperCase(primarykey.name));
-                        read = read.replace("@showName", proName.replace("表", ""));
-                        read = read.replace("@showDate", AutoUtils.getNowDate(DateConstants.DATE_FORMAT1));
+            String isPrimaryString = "";
+            String isGetPrimaryString = "";
+            String stringUtils = "";
+            if(primarykey != null && "String".equals(primarykey.type)){
+                isPrimaryString = "&& StringUtils.isNotBlank("+primarykey.name+")";
+                isGetPrimaryString = "&& StringUtils.isNotBlank(entity.get"+AutoUtils.getUpperCase(primarykey.name)+"())";
+                stringUtils = "import org.apache.commons.lang.StringUtils;";
+            }
 
-                        read = read.replace("@packageController@", project.getControllerPackage());
-                        read = read.replace("@packageBean@", project.getBeanPackage());
-                        read = read.replace("@packageService@", project.getServicePackage());
-                        read = read.replace("@packageUtil@", project.getPackageUtil());
+            String read = "";
+            String clzss = classsName.toLowerCase();
+            while ((read = bufferedReader.readLine()) != null) {
+                if (read != null && read.trim().length() > 0) {
+                    read = read.replace("@tabelName", tableName);
+                    read = read.replace("@ClassName", classsName);
+                    read = read.replace("@className", tableName);
+                    read = read.replace("@package@", project.getNckBasePackage());
+                    read = read.replace("@pramkeType", primarykey.type);
+                    read = read.replace("@primarykey", primarykey.name);
+                    read = read.replace("@Primarykey", AutoUtils.getUpperCase(primarykey.name));
+                    read = read.replace("@showName", proName.replace("表", ""));
+                    read = read.replace("@showDate", AutoUtils.getNowDate(DateConstants.DATE_FORMAT1));
 
-                        if (classsName != null && classsName.trim().length() > 0) {
-                            read = read.replace("@@clzss", clzss);
-                            read = read.replace("@class", AutoUtils.getLowerCase(classsName));
-                        }
+                    read = read.replace("@StringUtils@", stringUtils);
+                    read = read.replace("@isPrimaryString@", isPrimaryString);
+                    read = read.replace("@isGetPrimaryString@", isGetPrimaryString);
+
+                    read = read.replace("@packageController@", project.getControllerPackage());
+                    read = read.replace("@packageBean@", project.getBeanPackage());
+                    read = read.replace("@packageService@", project.getServicePackage());
+                    read = read.replace("@packageUtil@", project.getPackageUtil());
+
+                    if (classsName != null && classsName.trim().length() > 0) {
+                        read = read.replace("@@clzss", clzss);
+                        read = read.replace("@class", AutoUtils.getLowerCase(classsName));
                     }
-                    result = result + read + "\r\n";
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
+                result = result + read + "\r\n";
             }
         } catch (Exception e) {
             e.printStackTrace();

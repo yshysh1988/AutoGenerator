@@ -93,6 +93,7 @@
 						        <td>
 						         <div class="site-demo-button" >
 								   <button id="update@ClassName" data-method="setAddOrEdit" value="${r.@primarykey}" class="layui-btn layui-btn-normal layui-btn-small"><i class="layui-icon"></i><span>&nbsp;&nbsp;修改</span></button>
+								   <button id="delReleaseInfo" data-method="delIfon" value="${r.releaseId}" class="layui-btn layui-btn-warm layui-btn-small"><i class="layui-icon"></i><span>&nbsp;&nbsp;删除</span></button>
 								 </div>
 						       </td>
 				             </tr>
@@ -131,6 +132,7 @@
 	    //列表操作按钮
 	    var tableBtn = new Array();
 	    tableBtn = addBtn(tableBtn,"setAddOrEdit","修改","","","","","","layui-btn-normal");
+        tableBtn = addBtn(tableBtn,"delData","删除","","","","","","layui-btn-warm");
 		//tableBtn = addBtn(tableBtn,"enabled","禁用","","","status","true","1","layui-btn-danger");
 		//tableBtn = addBtn(tableBtn,"openset","启用","","","status","true","-1","layui-btn-danger");
 	</script>
@@ -156,10 +158,15 @@
 			//触发事件
 			var active = {
 				setAddOrEdit: function(data){
-					//获取userId
+					//获取 @primarykey
 					var id = data.val();
 					setAddOrEdit(id);
 				},
+                delIfon: function(data){
+                    //获取@primarykey
+                    var id = data.val();
+                    delData(id);
+                },
 				//启用和禁用数据弹窗
 				offset: function(othis){
 					var type = othis.data('type');
@@ -222,6 +229,13 @@
 			text = "确定要启用此条数据吗？";
 			userOffSet(0,requestUrl, id,text);
 		};
+		//删除
+		var delData = function(id){
+            //删除的url
+            requestUrl= "<%=request.getContextPath()%>/admin/@class/delete";
+            text = "确定要删除此条数据吗？";
+            userOffSet(2,requestUrl, id,text);
+		};
 
 		var userOffSet = function (type ,requestUrl,id,text) {
 			layer.open({
@@ -237,7 +251,7 @@
 					$.ajax({
 						type: "POST",
 						url: requestUrl,
-						data: {"id":id},
+						data: {"@primarykey":id},
 						dataType: "json",
 						cache:false,
 						success: function(data){

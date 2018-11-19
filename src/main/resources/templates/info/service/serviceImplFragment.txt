@@ -92,11 +92,7 @@ public class @ClassNameServiceImpl implements @ClassNameService {
 
         List<@ClassName> result = dao.pageQuery(entity, offset, pageSize);
 
-        PageUtil paginator = new PageUtil(pageSize, size, pageNum);
-
-        paginator.setObject(result);
-
-        return paginator;
+        return new PageUtil(pageSize, size, pageNum, result);
     }
     
     /**

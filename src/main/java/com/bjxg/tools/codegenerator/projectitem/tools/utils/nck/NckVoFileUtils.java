@@ -35,32 +35,28 @@ public class NckVoFileUtils {
         try {
             fileReader = new FileReader(fileName);
             bufferedReader = new BufferedReader(fileReader);
-            try {
-                String read = "";
-                while ((read = bufferedReader.readLine()) != null) {
-                    if (read != null && read.trim().length() > 0) {
-                        read = read.replace("@tabelName", tableName);
-                        read = read.replace("@ClassName", classsName);
-                        read = read.replace("@className", tableName);
-                        read = read.replace("@package@", packagestr);
-                        read = read.replace("@showName", proName.replace("表", ""));
-                        read = read.replace("@showDate", AutoUtils.getNowDate(DateConstants.DATE_FORMAT1));
-                        read = read.replace("@packageVo@", project.getVoPackage());
-                        if (classsName != null && classsName.trim().length() > 0) {
-                            read = read.replace("@class", AutoUtils.getLowerCase(classsName));
-                        }
-                        if ("@property".equals(read)) {
-                            read = setNckClass(new File(path + "propertyFragment.txt"), writeFile, clLs, path,
-                                    "bean");
-                        } else if (read.equals("@method")) {
-                            read = setNckClass(new File(path + "methodFragment.txt"), writeFile, clLs, path,
-                                    "bean");
-                        }
+            String read = "";
+            while ((read = bufferedReader.readLine()) != null) {
+                if (read != null && read.trim().length() > 0) {
+                    read = read.replace("@tabelName", tableName);
+                    read = read.replace("@ClassName", classsName);
+                    read = read.replace("@className", tableName);
+                    read = read.replace("@package@", packagestr);
+                    read = read.replace("@showName", proName.replace("表", ""));
+                    read = read.replace("@showDate", AutoUtils.getNowDate(DateConstants.DATE_FORMAT1));
+                    read = read.replace("@packageVo@", project.getVoPackage());
+                    if (classsName != null && classsName.trim().length() > 0) {
+                        read = read.replace("@class", AutoUtils.getLowerCase(classsName));
                     }
-                    result = result + read + "\r\n";
+                    if ("@property".equals(read)) {
+                        read = setNckClass(new File(path + "propertyFragment.txt"), writeFile, clLs, path,
+                                "bean");
+                    } else if (read.equals("@method")) {
+                        read = setNckClass(new File(path + "methodFragment.txt"), writeFile, clLs, path,
+                                "bean");
+                    }
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
+                result = result + read + "\r\n";
             }
         } catch (Exception e) {
             e.printStackTrace();
