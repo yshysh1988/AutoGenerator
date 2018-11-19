@@ -21,7 +21,6 @@ public class NckXmlFileUtils {
      * @param tableName  类生产的表明
      * @param classsName 生产的类名
      * @param proName    属性名
-     * @param methodName get/set方法名
      * @param primarykey 主键字段
      * @return
      */
@@ -51,6 +50,7 @@ public class NckXmlFileUtils {
 
                         read = read.replace("@packageDao@", project.getDaoPackage());
                         read = read.replace("@packageBean@", project.getBeanPackage());
+                        read = read.replace("@primaryType@", primarykey.type);
 
                         if (classsName != null && classsName.trim().length() > 0) {
                             read = read.replace("@class", clzss);

@@ -70,7 +70,7 @@
     </select>
     
     <!-- 根据id 查询 @showName -->
-	<select id="get@ClassNameById" parameterType="Long" resultMap="@classMap" >
+	<select id="get@ClassNameById" parameterType="@primaryType@" resultMap="@classMap" >
 		select 
 		 * 
 @@selectDate@@

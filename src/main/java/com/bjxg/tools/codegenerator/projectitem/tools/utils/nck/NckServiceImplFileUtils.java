@@ -9,6 +9,7 @@ import com.bjxg.tools.codegenerator.projectitem.Project;
 import com.bjxg.tools.codegenerator.projectitem.tools.bean.ClellBean;
 import com.bjxg.tools.codegenerator.projectitem.tools.constants.DateConstants;
 import com.bjxg.tools.codegenerator.projectitem.tools.utils.AutoUtils;
+import org.apache.poi.util.StringUtil;
 
 public class NckServiceImplFileUtils {
 
@@ -62,13 +63,13 @@ public class NckServiceImplFileUtils {
 					if("@setPrimarykeyVal@".equals(read)){
 						read =  setPrimarykeyVal;
 					}else if("@del@".equals(read)){
-						if(delFild != null){
+						if(delFild != null && delFild.row != null && delFild.row.trim().length() > 0){
 							read = "       entity.set"+AutoUtils.getUpperCase(delFild.name)+"(1L);\r\n         return dao.update(entity);\r\n";
 						}else {
 							read  = "       return dao.delete(entity);\r\n";
 						}
 					}else if("@update@".equals(read)){
-						if(updateFild !=  null){
+						if(updateFild !=  null && updateFild.row != null && updateFild.row.trim().length() > 0){
 							read = "        entity.set"+AutoUtils.getUpperCase(updateFild.name)+"(new java.util.Date());\r\n";
 						}else {
 							read = "";
