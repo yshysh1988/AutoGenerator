@@ -91,7 +91,7 @@ public class @ClassNameServiceImpl implements @ClassNameService {
 
         List<@ClassName> result = dao.pageQuery(entity, offset, pageSize);
 
-        return new PageUtil(pageSize, size, pageNum, return);
+        return new PageUtil(pageSize, size, pageNum, result);
 
     }
     

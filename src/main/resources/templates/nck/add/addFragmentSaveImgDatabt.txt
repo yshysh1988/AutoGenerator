@@ -2,5 +2,5 @@
         if(@propertyName == null || @propertyName == '' || @propertyName.length == 0){
             //$("#@propertyNameFile").focus();
             $("#s-@propertyName").text("请上传@describe@图片。");
-            return;
+            return false;
 		}

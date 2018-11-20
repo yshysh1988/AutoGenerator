@@ -62,7 +62,7 @@
 					        <td>
 					         <div class="site-demo-button" >
 							   <button id="update@ClassName" data-method="setAddOrEdit" value="${r.@primarykey}" class="layui-btn layui-btn-normal layui-btn-small"><i class="layui-icon"></i><span>&nbsp;&nbsp;修改</span></button>
-							   <%-- <button id="delReleaseInfo" data-method="delIfon" value="${r.releaseId}" class="layui-btn layui-btn-warm layui-btn-small"><i class="layui-icon"></i><span>&nbsp;&nbsp;删除</span></button> --%>
+							   <%-- <button id="delReleaseInfo" data-method="delIfon" value="${r.@primarykey}" class="layui-btn layui-btn-warm layui-btn-small"><i class="layui-icon"></i><span>&nbsp;&nbsp;删除</span></button> --%>
 							 </div>
 					       </td>
 			             </tr>
@@ -85,7 +85,8 @@
   </div>
 
 	<script type="text/javascript">
-
+	    //保存数据提交地址
+	    var reqUpdateAndAddUrl = "/admin/@class/insertAndUpdate";
 		//查询数据Url
 		var pageQueryUrl = "<%=request.getContextPath()%>/admin/@class/pageQuery";
 		//查询条件表单Id
@@ -167,20 +168,54 @@
 		         type: 2, 
 		         title: '新增/修改 @showName',
 		         area: ['70%', '86%'],
+		         btn: ['确定', '取消'],
 		         shade: 0.5,
 		         anim: 3,//0-6的动画形式，-1不开启
 		         content: '<%=request.getContextPath()%>/admin/@class/addOrEdit?@primarykey='+@primarykey,
 		         zIndex: layer.zIndex, //重点1
 		         success: function(layero, index){
 		        	 //layer.setAddOrEdit(layero);
-		        	 var body = layer.getChildFrame('body', index);
-		             var iframeWin = window[layero.find('iframe')[0]['name']]; 
-		             body.find('input[name="@primarykey"]').val(@primarykey);
-		             //弹窗表单的取消操作时关闭弹窗
-		             var canclebtn=body.find('button[name="cancleSubmit"]').click(function cancleSubmit(){
-		            	 layer.closeAll();
-		             });
-		         }
+		        	   var body = layer.getChildFrame('body', index);
+		              var iframeWin = window[layero.find('iframe')[0]['name']];
+		              body.find('input[name="@primarykey"]').val(@primarykey);
+		              //弹窗表单的取消操作时关闭弹窗
+		              var canclebtn=body.find('button[name="cancleSubmit"]').click(function cancleSubmit(){
+		            	  layer.closeAll();
+		              });
+		         },
+		         yes: function(index, layero){
+                       var body = layer.getChildFrame('body', index);
+                       var iframeWin = window[layero.find('iframe')[0]['name']];
+                       var data = iframeWin.getData();
+                       if(data != false){
+                            $.ajax({
+                                type: "POST",
+                                url: reqUpdateAndAddUrl,
+                                data: data,
+                                dataType: "json",
+                                cache:false,
+                                success: function(data){
+                                    var code = data.code;
+                                    var msg = data.message;
+                                    if(code == "200"){
+                                        layer.msg(msg, {icon: 1,time: 2000});//2秒关闭
+                                        //刷新页面
+                                        refreshTheCurrentPage();
+                                    }
+                                },
+                                error:function(){
+                                    layer.msg("操作失败", {icon: 1,time: 2000});//1.5秒关闭
+                                }
+                            });
+                            //按钮【按钮一】的回调
+                            layer.close(index); //如果设定了yes回调，需进行手工关闭
+                       }else{
+                             layer.msg("操作失败", {icon: 1,time: 2000});//1.5秒关闭
+                       }
+                 },cancel: function(){
+                        //右上角关闭回调
+                        // alert(4);
+                 }
 		     });
 		};
 		

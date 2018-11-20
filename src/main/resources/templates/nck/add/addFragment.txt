@@ -13,16 +13,12 @@
      		<div class="layui-form-item" >
 @divFiled@
 	 		</div>
-	 		<div class="layui-input-block" style="margin-top:30px;margin-left:324px;">
+	 		<div class="layui-input-block" style="margin-top:30px;margin-left:40%;">
 	 			<input type="button" class="layui-btn" onclick="saveData()" value="确定"/>
        			<button class="layui-btn" name="cancleSubmit" >取消</button>
      		</div>
   		</form>
 	</body>
-
-	<script type="text/javascript">
-		var reqUpdateAndAddUrl = "/admin/@class/insertAndUpdate";
-	</script>
 
 	<script type="text/javascript">
 		//提交表单数据
@@ -37,12 +33,12 @@
 @saveImg@
 		});
 	
-	function saveData() {
+	var getData = function () {
 @reqSave@
         var requestData={
 @@saveReqDate@@
         };
-        updateAndAdd(requestData);
+        return requestData;
     }
 	
 </script>

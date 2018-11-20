@@ -5,7 +5,7 @@ import com.bjxg.tools.AutoGeneratorUtils;
 public class TestGenerateProject {
 	
 	public static void main(String[] args) {
-		String docPath = System.getProperty("user.dir") + "/src/main/resources/信息发布接收表.xls";
+		String docPath = System.getProperty("user.dir") + "/src/main/resources/问题库.xlsx";
 		
 //		String nckOutPutPath = System.getProperty("user.dir") + "/src/main/java/netcai";
 //		AutoGeneratorUtils.generateSystemNck(docPath, "com.netcai.admin", "src/main/webapp/pages/", nckOutPutPath);

@@ -2,5 +2,5 @@
         if(@propertyName == null || @propertyName == '' || @propertyName.length == 0){
             $("#@propertyName").focus();
             $("#s-@propertyName").text("请填写@describe@。");
-            return;
+            return false;
 		}
